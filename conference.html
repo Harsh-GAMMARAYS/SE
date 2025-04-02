@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Conference</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        /* Register Now Button */
+        .register-btn {
+            display: inline-block;
+            background: #ffffff; /* White background for contrast */
+            color: #6e48aa; /* Purple text for elegance */
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 2px solid #6e48aa; /* Add a purple border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.2); /* Subtle shadow */
+            margin-bottom: 20px;
+        }
+        
+        .register-btn:hover {
+            background: #6e48aa; /* Purple background on hover */
+            color: #ffffff; /* White text on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(110, 72, 170, 0.4); /* Slightly stronger shadow on hover */
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            padding: 60px 0;
+        }
+        
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 30%;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-card h2 {
+            color: #6e48aa;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-card p {
+            color: #666;
+        }
+        
+        .domain-section {
+            background: linear-gradient(135deg, #4776E6, #8E54E9);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin: 60px 0;
+            border-radius: 10px;
+        }
+        
+        .domain-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .domain-section p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+        
+        .domain-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .domain-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        /* Paper Submission Section */
+        .paper-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .paper-section h2 {
+            font-size: 2.5rem;
+            color: #6e48aa;
+            margin-bottom: 20px;
+        }
+        
+        .paper-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .submit-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(110, 72, 170, 0.6);
+        }
+        
+        /* QR Section */
+        .qr-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .qr-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .qr-content h2 {
+            color: #6e48aa;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .qr-content p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .qr-code img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .info-card {
+                width: 48%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .info-card {
+                width: 100%;
+            }
+            
+            .qr-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="container">
+                <!-- Add the KIIT logo -->
+                <img src="kiit-logo.png" alt="KIIT Logo" style="width: 150px; margin-bottom: 20px;">
+                <h1>Blockchain Conference 2025</h1>
+                <p class="tagline">Exploring the Frontiers of Blockchain and Web3</p>
+                <a href="#qr-section" class="register-btn">Register Now</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="container">
+            <section class="info-section">
+                <div class="info-card">
+                    <h2>Date</h2>
+                    <p>November 15-17, 2025</p>
+                </div>
+                <div class="info-card">
+                    <h2>Venue</h2>
+                    <p>Grand Convention Center<br>
+                       Silicon Valley, California</p>
+                </div>
+                <div class="info-card">
+                    <h2>Registration</h2>
+                    <p>Early Bird Deadline: September 30, 2025<br>
+                       Regular Registration Closes: November 1, 2025</p>
+                </div>
+            </section>
+            
+            <section class="domain-section">
+                <h2>Conference Domain</h2>
+                <p>This year's conference focuses on cutting-edge advancements and applications in Crypto and Blockchain.</p>
+                <div class="domain-tags">
+                    <span class="domain-tag">DeFi</span>
+                    <span class="domain-tag">NFTs</span>
+                    <span class="domain-tag">Smart Contracts</span>
+                    <span class="domain-tag">Decentralized Applications</span>
+                    <span class="domain-tag">Consensus Mechanisms</span>
+                    <span class="domain-tag">Layer 2 Scaling</span>
+                    <span class="domain-tag">Blockchain Security</span>
+                    <span class="domain-tag">Cryptographic Techniques</span>
+                </div>
+            </section>
+            
+            <section class="paper-section">
+                <h2>Submit Your Paper</h2>
+                <p>We invite researchers and practitioners to submit original, high-quality papers describing innovative research and developments in all areas of Blockchain. All accepted papers will be published in our conference proceedings.</p>
+                <a href="#" class="submit-btn">Submit Paper</a>
+            </section>
+            
+            <section class="qr-section" id="qr-section">
+                <div class="qr-content">
+                    <h2>Register Now</h2>
+                    <p>Scan this QR code with your mobile device to access our registration portal and secure your spot at the premier Blockchain event of the year.</p>
+                    <p>Early registration discounts available until September 30, 2025.</p>
+                </div>
+                <div class="qr-code">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://conference2025.com/register" alt="QR Code for Registration">
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 International Blockchain Conference. All rights reserved.</p>
+            <p>Contact: info@aimlconference.org | +91 9876-543-3212</p>
+        </div>
+    </footer>
+</body>
+</html>
